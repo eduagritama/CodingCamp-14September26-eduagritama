@@ -1,0 +1,199 @@
+:root {
+    /* Tema Terang (warna dominan putih-krem) */
+    --bg-color: #f4f4f0;
+    --card-bg: #ffffff;
+    --text-main: #000000;
+    --border-color: #000000;
+    --primary-color: #e60000;
+    --primary-hover: #ff1a1a;
+    --danger-color: #000000;
+    --danger-hover: #e60000;
+    --badge-bg: #e6e6e6;
+    --shadow-color: #000000;
+}
+
+[data-theme="dark"] {
+    /* Tema Gelap (warna dominan item) */
+    --bg-color: #1a1a1a;
+    --card-bg: #000000;
+    --text-main: #ffffff;
+    --border-color: #ffffff;
+    --primary-color: #ff3333;
+    --primary-hover: #ff6666;
+    --danger-color: #ffffff;
+    --danger-hover: #ff3333;
+    --badge-bg: #333333;
+    --shadow-color: #ff3333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Font dasarnya */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+}
+
+/* Font UI (Biar keliatan retro/keren) */
+h1, h2, h3, label, button, input, select, .badge, .subtitle, .amount, .mono-title {
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    border-bottom: 4px solid var(--border-color);
+    padding-bottom: 16px;
+}
+
+header h2 { font-weight: 700; font-size: 24px; letter-spacing: -1px; }
+
+/* Desain kartu brutalist (kaku & bergaris tebal) */
+.card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 6px 6px 0px var(--shadow-color);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+
+/* Efek pas kartunya kesentuh kursor */
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--shadow-color);
+}
+
+/* Bikin kotak total saldo warna merah biar ngejreng */
+.balance-card {
+    text-align: center;
+    border-color: var(--primary-color);
+    box-shadow: 6px 6px 0px var(--primary-color);
+}
+
+.balance-card .subtitle { font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+.balance-card h1 { font-size: 56px; color: var(--primary-color); margin-top: 10px; margin-bottom: 20px; }
+
+/* --- UPDATE BAGIAN FILTER --- */
+.monthly-filter { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; /* Biar turun ke bawah di HP */
+    gap: 12px; 
+    font-size: 12px; 
+    margin-top: 15px;
+}
+
+/* Bagian form */
+.mono-title { font-size: 18px; margin-bottom: 20px; font-weight: 700; border-bottom: 2px dashed var(--border-color); padding-bottom: 8px; }
+.form-group { margin-bottom: 20px; }
+label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus, select:focus { border-color: var(--primary-color); background-color: var(--card-bg); }
+.category-input-group { display: flex; gap: 10px; }
+
+/* Tombol-tombolnya */
+button { cursor: pointer; font-weight: 700; transition: all 0.2s; letter-spacing: 1px; }
+.btn-primary { width: 100%; padding: 14px; background-color: var(--primary-color); color: var(--card-bg); border: 3px solid var(--border-color); font-size: 16px; box-shadow: 4px 4px 0px var(--border-color); }
+.btn-primary:hover { background-color: var(--primary-hover); transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--border-color); }
+.btn-outline { padding: 10px 16px; background-color: var(--card-bg); border: 3px solid var(--border-color); color: var(--text-main); box-shadow: 3px 3px 0px var(--border-color); }
+.btn-outline:hover { background-color: var(--primary-color); color: var(--card-bg); }
+.btn-danger { padding: 8px 12px; background-color: var(--danger-color); color: var(--card-bg); font-size: 12px; border: 2px solid var(--border-color); }
+.btn-danger:hover { background-color: var(--danger-hover); color: #fff; }
+
+/* Style tombol hapus filter biar asik dan responsif */
+.btn-clear {
+    padding: 10px 16px;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 2px solid var(--border-color);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 12px;
+    box-shadow: 3px 3px 0px var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border-color);
+}
+
+/* Layout buat bagian bawah */
+.bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+/* List transaksinya (biar bisa di scroll) */
+.transactions-list { max-height: 350px; overflow-y: auto; padding-right: 10px; }
+.transactions-list::-webkit-scrollbar { width: 8px; }
+.transactions-list::-webkit-scrollbar-thumb { background-color: var(--border-color); }
+
+.transaction-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 2px dashed var(--border-color); }
+.transaction-item:last-child { border-bottom: none; }
+.transaction-info h4 { font-family: 'EB Garamond', serif; font-size: 22px; font-weight: 700; text-transform: none; }
+.transaction-info .amount { color: var(--primary-color); font-size: 16px; margin: 4px 0; font-family: 'Space Mono', monospace; font-weight: 700; }
+.transaction-info .badge { display: inline-block; padding: 4px 8px; background-color: var(--border-color); color: var(--card-bg); font-size: 10px; }
+
+.chart-container { position: relative; height: 300px; width: 100%; }
+
+/* Style buat modal buatan (popup) */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8); display: none;
+    justify-content: center; align-items: center; z-index: 1000;
+}
+.modal-overlay.active { display: flex; }
+.modal-card { width: 90%; max-width: 400px; }
+
+/* Biar rapi pas dibuka di HP */
+@media (max-width: 768px) { 
+    .bottom-grid { grid-template-columns: 1fr; } 
+    
+    /* Bikin filter bulanan numpuk rapi ke bawah di HP */
+    .monthly-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .monthly-filter label {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    #monthFilter {
+        width: 100%;
+        text-align: center;
+    }
+    .btn-clear {
+        width: 100%; /* Tombolnya jadi lebar full biar enak dipencet jempol */
+        padding: 12px;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Balance Book</title>
+    <!-- Font nya nih -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Sambungin ke CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Library Chart.js buat grafiknya -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>THE BALANCE BOOK</h2>
+            <button id="themeToggle" class="btn-outline">DARK MODE</button>
+        </header>
+
+        <!-- Kartu Total Saldo -->
+        <div class="card balance-card">
+            <p class="subtitle">TOTAL SALDO</p>
+            <h1 id="totalBalance">Rp 0</h1>
+            
+            <!-- Filter bulanannya -->
+            <div class="monthly-filter">
+                <label for="monthFilter">RINGKASAN BULAN:</label>
+                <input type="month" id="monthFilter">
+                <button id="clearFilter" class="btn-clear">HAPUS FILTER</button>
+            </div>
+        </div>
+
+        <!-- Form buat nambah transaksi -->
+        <div class="card form-card">
+            <h3 class="mono-title">TAMBAH TRANSAKSI</h3>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label for="itemName">NAMA BARANG / KEGIATAN</label>
+                    <input type="text" id="itemName" placeholder="Misal: Beli Nasi Padang" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">NOMINAL (RP)</label>
+                    <input type="number" id="amount" step="1" placeholder="Misal: 25000" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">TANGGAL</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">KATEGORI</label>
+                    <div class="category-input-group">
+                        <select id="category" required>
+                            <!-- Kategori bakal dimunculin pake JS disini -->
+                        </select>
+                        <button type="button" id="openCategoryModalBtn" class="btn-outline">+ BARU</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">SIMPAN TRANSAKSI</button>
+            </form>
+        </div>
+
+        <div class="bottom-grid">
+            <!-- List transaksinya -->
+            <div class="card transactions-card">
+                <h3 class="mono-title">RIWAYAT TRANSAKSI</h3>
+                <div class="transactions-list" id="transactionsList">
+                    <!-- Transaksi bakal muncul di mari -->
+                </div>
+            </div>
+
+            <!-- Bagian Grafik -->
+            <div class="card chart-card">
+                <h3 class="mono-title">GRAFIK PENGELUARAN</h3>
+                <div class="chart-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal buatan sendiri buat nambah kategori -->
+    <div id="categoryModal" class="modal-overlay">
+        <div class="modal-card card">
+            <h3 class="mono-title" id="modalTitle">KATEGORI BARU</h3>
+            <p id="modalMessage" style="display:none; color: var(--primary-color); font-family: 'Space Mono'; font-size: 12px; margin-bottom: 10px;"></p>
+            <input type="text" id="newCategoryInput" placeholder="Misal: LISTRIK" style="margin-bottom: 16px;">
+            <div style="display: flex; gap: 10px;">
+                <button id="saveCategoryBtn" class="btn-primary">SIMPAN</button>
+                <button id="closeModalBtn" class="btn-outline">BATAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sambungin ke JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
